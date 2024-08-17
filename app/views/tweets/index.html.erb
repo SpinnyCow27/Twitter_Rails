@@ -1,18 +1,44 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-success"><%= notice %></p>
 
 <% content_for :title, "Tweets" %>
 
 <h1>Tweets</h1>
+<div class="container">
+<%= form_with url: tweets_path, method: :get, class: "mb-4" do |form| %>
+  <div class="input-group">
+    <%= form.text_field :query_text, placeholder: ('Buscar usuario o id'), value: params[:query_text], class: "form-control" %>
+    <div class="input-group-append">
+      <%= form.submit ('Buscar'), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
 
-<div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
-  <% end %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Contenido</th>
+        <th>Usuario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <tr>
+          <td><%= tweet.description %></td>
+          <td><%= tweet.username %></td>
+          <td>
+            <%= link_to 'Mostrar', tweet, class: "btn btn-info btn-sm" %>
+            <%= link_to 'Editar', edit_tweet_path(tweet), class: "btn btn-warning btn-sm" %>
+            <%= link_to 'Eliminar', tweet, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<div class="d-flex justify-content-center">
+  <%= raw pagy_nav(@pagy) %>
 </div>
 
-<%= raw pagy_nav(@pagy) %>
-
-<%= link_to "New tweet", new_tweet_path %>
+<%= link_to "Nuevo Tweet", new_tweet_path, class: "btn btn-success mt-3" %>
+</div>

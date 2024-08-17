@@ -61,3 +61,5 @@ gem "pagy", "~> 9.0"
 
 # Gema ruby
 gem "faker", "~> 3.4", ">= 3.4.2"
+
+gem "pg_search", "~> 2.3"
