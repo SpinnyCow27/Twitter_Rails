@@ -55,3 +55,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Paginador
+gem "pagy", "~> 9.0"
+
+# Gema ruby
+gem "faker", "~> 3.4", ">= 3.4.2"
