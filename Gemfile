@@ -57,7 +57,7 @@ group :test do
 end
 
 # Paginador
-gem "pagy", "~> 9.0"
+gem "pagy", "~> 9.1"
 
 # Gema ruby
 gem "faker", "~> 3.4", ">= 3.4.2"
